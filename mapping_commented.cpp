@@ -156,14 +156,17 @@ int bresenham(int x0, int y0, int x1, int y1, ArrayBase<Derived>& invmod)
     int dy2 = y1 - y0;
     int invmodSize = 1;
     
+    //Check if change in y is greater than change in x
     const bool s = abs(dy) > abs(dx);
 
+    //if dy is greater then swap dx and dy
     if (s){
         int dx2 = dx;
         dx = dy;
         dy = dx2;
     }
 
+    //
     int inc1 = 2 * dy;
     int d = inc1 - dx;
     int inc2 = d - dx;
@@ -245,7 +248,7 @@ int main(int argc, char **argv)
         ros::spinOnce();   //Check for new messages
         //Checks if new data has been recieved
         if(NEW_VALUES && NEW_POS){
-
+        	//Loops through the array for 
             for(int i = 0; i<numRanges; i++){
                 if(isnan(ranges[i])==0){
                     invmod = ArrayXXf::Zero(range_max,3);
